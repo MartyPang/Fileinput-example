@@ -14,7 +14,7 @@ import static org.apache.struts2.ServletActionContext.getServletContext;
 /**
  * Created by Marty Pang on 2017/2/17.
  */
-
+@Deprecated
 public class UploadAction extends BaseAction{
     // 上传文件存储目录
     private static final String UPLOAD_DIRECTORY = "upload";

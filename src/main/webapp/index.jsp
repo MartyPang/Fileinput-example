@@ -70,7 +70,6 @@
     $("#input_upload").fileinput({
         language: 'en',
         uploadUrl: "${ctx}/upload",
-        allowedPreviewTypes: null,
         showCaption: true,
         browseClass: "btn btn-info"
     });

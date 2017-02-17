@@ -3,6 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,11 +30,7 @@
         Ladda.bind( 'input[type=submit]' );
 
         function upload() {
-            $("#input_upload").fileinput('refresh', {
-                uploadExtraData: {
-                    path: "/test"
-                }
-            });
+            $("#input_upload").fileinput('refresh');
         }
     </script>
 </head>
@@ -68,16 +65,14 @@
         </div>
     </div>
 </div>
-<<script type="text/javascript">
+
+<script type="text/javascript">
     $("#input_upload").fileinput({
         language: 'en',
         uploadUrl: "${ctx}/upload",
         allowedPreviewTypes: null,
         showCaption: true,
-        browseClass: "btn btn-info",
-        uploadExtraData: {
-            path: "/test"
-        }
+        browseClass: "btn btn-info"
     });
 </script>
 </body>

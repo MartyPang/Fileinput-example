@@ -1,21 +1,23 @@
-package Action;
+package servlet;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.json.JSONObject;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
-import static org.apache.struts2.ServletActionContext.getServletContext;
 
 /**
  * Created by Marty Pang on 2017/2/17.
  */
-
-public class UploadAction extends BaseAction{
+public class UploadFileServlet extends HttpServlet {
     // 上传文件存储目录
     private static final String UPLOAD_DIRECTORY = "upload";
     // 上传配置
@@ -23,14 +25,14 @@ public class UploadAction extends BaseAction{
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
     private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
-    public void uploadFiles() throws Exception{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
 
         JSONObject jsonObject = new JSONObject();
 
-       // 检测是否为多媒体上传
-        if (!ServletFileUpload.isMultipartContent(getRequest())) {
+        // 检测是否为多媒体上传
+        if (!ServletFileUpload.isMultipartContent(request)) {
             // 如果不是则停止
             PrintWriter writer = response.getWriter();
             writer.println("Error: 表单必须包含 enctype=multipart/form-data");
@@ -73,7 +75,7 @@ public class UploadAction extends BaseAction{
         try {
             // 解析请求的内容提取文件数据
             @SuppressWarnings("unchecked")
-            List<FileItem> formItems = upload.parseRequest(getRequest());
+            List<FileItem> formItems = upload.parseRequest(request);//struts2会改变request类型，这里返回null
             System.out.println(formItems.size());
             if (formItems != null && formItems.size() > 0) {
                 // 迭代表单数据
@@ -108,5 +110,9 @@ public class UploadAction extends BaseAction{
         }
         jsonObject.put("msg", "ok");
         out.write(jsonObject.toString());
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

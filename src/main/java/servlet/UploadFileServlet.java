@@ -22,8 +22,8 @@ public class UploadFileServlet extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "upload";
     // 上传配置
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 60; // 60MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 70; // 70MB
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");

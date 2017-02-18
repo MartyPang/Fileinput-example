@@ -1,12 +1,13 @@
-<%@ include file="taglib.jsp"%>
-<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<%@ include file="taglib.jsp"%>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>你好</title>
     <!--BootStrap-->
     <link rel="stylesheet" href="${ctx}/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="${ctx}/assets/bootstrap-3.3.7-dist/js/jquery-3.1.1.js"></script>
@@ -53,7 +54,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Upload</h4>
             </div>
             <div class="modal-body">
@@ -69,9 +70,11 @@
 <script type="text/javascript">
     $("#input_upload").fileinput({
         language: 'en',
-        uploadUrl: "${ctx}/upload",
+        uploadUrl: "${ctx}/upload?type=text",
         showCaption: true,
-        browseClass: "btn btn-info"
+        browseClass: "btn btn-info",
+        allowedPreviewTypes: ['text'],
+        allowedFileExtensions: ['txt','doc','docx','xls','xlsx','ppt','pptx']
     });
 </script>
 </body>

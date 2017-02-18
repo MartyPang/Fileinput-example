@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/servlet/UploadFileServlet.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/bootstrap-3.3.7-dist" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/bootstrap-loading" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/file-input" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/jQueryUI" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/jquery-confirm" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/index.jsp" charset="UTF-8" />
   </component>
 </project>

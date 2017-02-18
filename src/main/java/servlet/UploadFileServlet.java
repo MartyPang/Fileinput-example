@@ -58,12 +58,19 @@ public class UploadFileServlet extends HttpServlet {
         // 设置最大请求值 (包含文件和表单数据)
         upload.setSizeMax(MAX_REQUEST_SIZE);
 
+        // 设置中文文件名编码
+        upload.setHeaderEncoding("utf-8");
+
+        //文件类型:text,image,video
+        String fileType = request.getParameter("type");
+        System.out.println(fileType);
         // 构造临时路径来存储上传的文件
         // 这个路径相对当前应用的目录
-        String uploadPath = getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
+        String uploadPath = getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY + File.separator + fileType;
         System.out.println(uploadPath);
         //记录上传的文件名
         String loadFileName = null;
+
 
 
         // 如果目录不存在则创建
@@ -85,7 +92,7 @@ public class UploadFileServlet extends HttpServlet {
                     if (!item.isFormField()) {
                         String fileName = new File(item.getName()).getName();
 
-                        loadFileName = fileName;
+                        //loadFileName = fileName;
 
                         String filePath = uploadPath + File.separator + fileName;
                         File storeFile = new File(filePath);
@@ -96,6 +103,7 @@ public class UploadFileServlet extends HttpServlet {
 
                         request.setAttribute("message", "upload successful!");
                     }else{
+                        //读取表单数据
                         String name = item.getFieldName();
                         String value = new String(item.getString().getBytes("ISO8859_1"),"utf-8");
                         System.out.println(name + " " + value);

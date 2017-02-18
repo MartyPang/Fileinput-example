@@ -22,8 +22,8 @@ public class UploadFileServlet extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "upload";
     // 上传配置
     private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 60; // 60MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 70; // 70MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 1024 * 9; // 60MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 1024 * 10; // 70MB
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
@@ -61,7 +61,8 @@ public class UploadFileServlet extends HttpServlet {
         // 设置中文文件名编码
         upload.setHeaderEncoding("utf-8");
 
-        //文件类型:text,image,video
+
+      //文件类型:text,image,video
         String fileType = request.getParameter("type");
         System.out.println(fileType);
         // 构造临时路径来存储上传的文件

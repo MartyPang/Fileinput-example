@@ -52,6 +52,7 @@ jQuery(function() {
     }
 
     var fileMd5;
+    var filename;
 //监听分块上传过程中的三个时间点
     WebUploader.Uploader.register({
         "before-send-file":"beforeSendFile",
@@ -68,6 +69,7 @@ jQuery(function() {
                 })
                 .then(function(val){
                     fileMd5=val;
+                    filename=file.name;
                     //$('#item1').find("p.state").text("成功获取文件信息...");
                     //获取文件信息后进入下一步
                     deferred.resolve();
@@ -113,9 +115,10 @@ jQuery(function() {
                 url:"/Video?action=mergeChunks",
                 data:{
                     fileMd5:fileMd5,
+                    filename:filename,
                 },
                 success:function(response){
-                    alert("上传成功");
+                    //alert("上传成功");
                     //var path = "uploads/"+fileMd5+".mp4";
                     //$("#item1").attr("src",path);
                 }
@@ -486,6 +489,7 @@ jQuery(function() {
         } else if ( state === 'paused' ) {
             uploader.upload();
         } else if ( state === 'uploading' ) {
+            //暂停上传
             uploader.stop(true);
         }
     });

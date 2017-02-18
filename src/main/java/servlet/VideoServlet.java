@@ -35,7 +35,9 @@ public class VideoServlet extends HttpServlet {
             //合并文件
             //需要合并的文件的目录标记
             String fileMd5 = request.getParameter("fileMd5");
-
+            //获取文件名
+            String filename = request.getParameter("filename");
+            System.out.println(filename);
             //读取目录里的所有文件
             File f = new File(savePath+"/"+fileMd5);
             File[] fileArray = f.listFiles(new FileFilter(){
@@ -60,8 +62,8 @@ public class VideoServlet extends HttpServlet {
                     return 1;
                 }
             });
-            //UUID.randomUUID().toString()-->随机名
-            File outputFile = new File(savePath+"/"+fileMd5+".mp4");
+
+            File outputFile = new File(savePath+"/"+filename);
             //创建文件
             outputFile.createNewFile();
             //输出流
